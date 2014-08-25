@@ -14,19 +14,31 @@ func BubbleSort(list []int) []int {
 }
 
 func SelectionSort(list []int) []int {
-  var i, j, min, aux int
-  for i = 0; i < len(list)-1; i++ {
-    min = i
-    for j = i+1; j < len(list); j++ {
-      if list[j] < list[min] {
-	min = j
-      }
-    }
-    if i != min {
-      aux = list[i]
-      list[i] = list[min]
-      list[min] = aux
-    }
-  }
-  return list
+	var i, j, min, aux int
+	for i = 0; i < len(list)-1; i++ {
+		min = i
+		for j = i + 1; j < len(list); j++ {
+			if list[j] < list[min] {
+				min = j
+			}
+		}
+		if i != min {
+			aux = list[i]
+			list[i] = list[min]
+			list[min] = aux
+		}
+	}
+	return list
+}
+
+func InsertionSort(list []int) []int {
+	for k, v := range list {
+		position := k
+		for position > 0 && list[position-1] > v {
+			list[position] = list[position-1]
+			position = position - 1
+		}
+		list[position] = v
+	}
+	return list
 }
